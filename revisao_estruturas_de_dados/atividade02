@@ -1,0 +1,396 @@
+# Exercício 1 – Soma de um vetor
+
+
+#include <stdio.h>
+
+int main() {
+
+    int v[10];      // Vetor para armazenar 10 números
+    int soma = 0;   // Variável para acumular a soma
+
+    // Leitura dos valores
+    for(int i = 0; i < 10; i++) {
+        scanf("%d", &v[i]);
+        soma += v[i];
+    }
+
+    // Exibição dos números digitados
+    printf("Valores: ");
+    for(int i = 0; i < 10; i++) {
+        printf("%d ", v[i]);
+    }
+
+    // Exibição da soma e média
+    printf("\nSoma = %d", soma);
+    printf("\nMedia = %.2f", soma / 10.0);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 2 – Maior e menor valor
+
+
+#include <stdio.h>
+
+int main() {
+
+    int v[10];
+
+    // Leitura dos valores
+    for(int i = 0; i < 10; i++) {
+        scanf("%d", &v[i]);
+    }
+
+    // Inicializa com o primeiro elemento
+    int maior = v[0];
+    int menor = v[0];
+    int posMaior = 0;
+    int posMenor = 0;
+
+    // Procura maior e menor valor
+    for(int i = 1; i < 10; i++) {
+
+        if(v[i] > maior) {
+            maior = v[i];
+            posMaior = i;
+        }
+
+        if(v[i] < menor) {
+            menor = v[i];
+            posMenor = i;
+        }
+    }
+
+    printf("Maior valor: %d\n", maior);
+    printf("Posicao: %d\n", posMaior);
+
+    printf("Menor valor: %d\n", menor);
+    printf("Posicao: %d\n", posMenor);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 3 – Números pares
+
+
+#include <stdio.h>
+
+int main() {
+
+    int v[20];
+    int soma = 0;
+    int quantidade = 0;
+
+    // Leitura dos números
+    for(int i = 0; i < 20; i++) {
+        scanf("%d", &v[i]);
+    }
+
+    printf("Numeros pares:\n");
+
+    // Verifica quais são pares
+    for(int i = 0; i < 20; i++) {
+
+        if(v[i] % 2 == 0) {
+
+            printf("%d ", v[i]);
+
+            soma += v[i];
+            quantidade++;
+        }
+    }
+
+    printf("\nQuantidade de pares: %d", quantidade);
+    printf("\nSoma dos pares: %d", soma);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 4 – Inversão de vetor
+
+
+#include <stdio.h>
+
+int main() {
+
+    int v[10];
+
+    // Leitura do vetor
+    for(int i = 0; i < 10; i++) {
+        scanf("%d", &v[i]);
+    }
+
+    // Troca os elementos das extremidades
+    for(int i = 0; i < 5; i++) {
+
+        int aux = v[i];
+
+        v[i] = v[9 - i];
+        v[9 - i] = aux;
+    }
+
+    printf("Vetor invertido:\n");
+
+    for(int i = 0; i < 10; i++) {
+        printf("%d ", v[i]);
+    }
+
+    return 0;
+}
+
+
+---
+
+# Exercício 5 – Matriz 3x3
+
+
+#include <stdio.h>
+
+int main() {
+
+    int matriz[3][3];
+    int soma = 0;
+    int maior;
+
+    // Leitura da matriz
+    for(int i = 0; i < 3; i++) {
+
+        for(int j = 0; j < 3; j++) {
+
+            scanf("%d", &matriz[i][j]);
+
+            soma += matriz[i][j];
+
+            // Primeiro elemento inicia o maior valor
+            if(i == 0 && j == 0) {
+                maior = matriz[i][j];
+            }
+
+            if(matriz[i][j] > maior) {
+                maior = matriz[i][j];
+            }
+        }
+    }
+
+    printf("Soma = %d\n", soma);
+    printf("Maior valor = %d\n", maior);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 6 – Diagonal principal
+
+
+#include <stdio.h>
+
+int main() {
+
+    int matriz[4][4];
+    int soma = 0;
+
+    // Leitura da matriz
+    for(int i = 0; i < 4; i++) {
+
+        for(int j = 0; j < 4; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("Diagonal principal: ");
+
+    // Elementos onde linha = coluna
+    for(int i = 0; i < 4; i++) {
+
+        printf("%d ", matriz[i][i]);
+
+        soma += matriz[i][i];
+    }
+
+    printf("\nSoma da diagonal = %d", soma);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 8 – Struct Produto
+
+
+#include <stdio.h>
+
+struct Produto {
+
+    char nome[50];
+    int codigo;
+    float preco;
+    int quantidade;
+};
+
+int main() {
+
+    struct Produto produtos[5];
+
+    float maiorValor = 0;
+    int indiceMaior = 0;
+
+    // Cadastro dos produtos
+    for(int i = 0; i < 5; i++) {
+
+        scanf("%s", produtos[i].nome);
+        scanf("%d", &produtos[i].codigo);
+        scanf("%f", &produtos[i].preco);
+        scanf("%d", &produtos[i].quantidade);
+
+        // Calcula valor em estoque
+        float valor =
+            produtos[i].preco *
+            produtos[i].quantidade;
+
+        // Verifica maior valor
+        if(valor > maiorValor) {
+
+            maiorValor = valor;
+            indiceMaior = i;
+        }
+    }
+
+    printf("Produto com maior valor em estoque:\n");
+    printf("%s\n", produtos[indiceMaior].nome);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 9 – Struct Aluno
+
+
+#include <stdio.h>
+
+struct Aluno {
+
+    char nome[50];
+    int idade;
+    float nota1;
+    float nota2;
+    float nota3;
+};
+
+int main() {
+
+    struct Aluno alunos[5];
+
+    int aprovados = 0;
+    int reprovados = 0;
+
+    float maiorMedia = 0;
+    int melhorAluno = 0;
+
+    // Cadastro dos alunos
+    for(int i = 0; i < 5; i++) {
+
+        scanf("%s", alunos[i].nome);
+        scanf("%d", &alunos[i].idade);
+
+        scanf("%f", &alunos[i].nota1);
+        scanf("%f", &alunos[i].nota2);
+        scanf("%f", &alunos[i].nota3);
+
+        // Calcula média
+        float media =
+            (alunos[i].nota1 +
+             alunos[i].nota2 +
+             alunos[i].nota3) / 3;
+
+        // Classificação
+        if(media >= 7.0) {
+            aprovados++;
+        } else {
+            reprovados++;
+        }
+
+        // Verifica maior média
+        if(i == 0 || media > maiorMedia) {
+            maiorMedia = media;
+            melhorAluno = i;
+        }
+    }
+
+    printf("Aprovados: %d\n", aprovados);
+    printf("Reprovados: %d\n", reprovados);
+
+    printf("Aluno com maior media: %s\n",
+           alunos[melhorAluno].nome);
+
+    return 0;
+}
+
+
+---
+
+# Exercício 10 – Sistema de Funcionários
+
+
+#include <stdio.h>
+
+struct Funcionario {
+
+    char nome[50];
+    int idade;
+    char cargo[50];
+    float salario;
+};
+
+int main() {
+
+    struct Funcionario funcionarios[10];
+
+    float somaSalarios = 0;
+    float maiorSalario = 0;
+    int indiceMaior = 0;
+
+    // Cadastro dos funcionários
+    for(int i = 0; i < 10; i++) {
+
+        scanf("%s", funcionarios[i].nome);
+        scanf("%d", &funcionarios[i].idade);
+        scanf("%s", funcionarios[i].cargo);
+        scanf("%f", &funcionarios[i].salario);
+
+        somaSalarios += funcionarios[i].salario;
+
+        // Verifica maior salário
+        if(i == 0 ||
+           funcionarios[i].salario > maiorSalario) {
+
+            maiorSalario = funcionarios[i].salario;
+            indiceMaior = i;
+        }
+    }
+
+    // Calcula média salarial
+    float media = somaSalarios / 10;
+
+    printf("Media salarial: %.2f\n", media);
+
+    printf("Funcionario com maior salario:\n");
+    printf("%s\n", funcionarios[indiceMaior].nome);
+
+    return 0;
+}
+
+**Baseado nos exercícios da aula de Arrays, Matrizes e Structs.**
